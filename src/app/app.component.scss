@@ -1,0 +1,29 @@
+.container{
+    width: 100vw;
+    height: 94vh;
+    background: #00000062;
+    backdrop-filter: blur(30vh);
+    position: relative;
+    overflow-x: hidden;
+    z-index: 10;
+}
+.touch{
+    display: none;
+    & + .container::-webkit-scrollbar{width: 0;}
+}
+@mixin color( $color, $width, $height, $top, $left) {
+    width: $width;
+    height: $height;
+    background: $color;
+    position: absolute;
+    top: $top;
+    left: $left;
+}
+.purple{@include color(#6200ff, 20%, 40%, 60%, 10%);}
+.rose{@include color(#ff009d, 10%, 10%, 90%, 90%);}
+
+@media screen and (max-width:600px) {
+    .container::-webkit-scrollbar{
+        width: 0;
+    }
+}

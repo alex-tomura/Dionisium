@@ -1,0 +1,36 @@
+.container{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .buttons{
+        width: 30%;
+        height: 100%;
+        button{
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            font-size: 1.3rem;
+            transition: all ease .5s;
+        }
+        .active{
+            cursor: pointer;
+            &:hover{
+                color: #6128FF;
+            }
+        }
+        .inactive{
+            color: #aaaaaa;
+        }
+    }
+}
+@media screen and (max-width:600px) {
+    .container{
+        padding: 0 5%;
+    }
+    .buttons{
+        width: 45% !important;
+        button{font-size: 1rem !important;}
+    }
+}

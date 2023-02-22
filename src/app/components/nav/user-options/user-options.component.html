@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="icons" [ngStyle]="{'grid-template-columns': 'repeat(' + icons.length + ', 4rem)'}">
+        <div class="icon" *ngFor="let icon of icons" (click)="change(icon)">
+            <div class="img"><img [src]="'assets/' + icon + '.jpg'" alt=""></div>
+            <div class="select" *ngIf="icon == selected">
+                <div class="img"><img src="assets/check-icon.svg" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="logout">
+        <button type="button" (click)="logout()">Cerrar Sesión</button>
+    </div>
+</div>

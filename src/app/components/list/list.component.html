@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="popular">
+        <div class="preview" *ngIf="chargue_status == true" [ngStyle]="{'left':popular_left + '%'}">
+            <div class="img" *ngFor="let popular_item of popular"><img loading="lazy" [src]="popular_item.thumnail" [routerLink]="'/serie/preview/' + this.popular_item._id + '/' + this.popular_item.name" referrerpolicy="no-referrer" alt=""></div>
+            <app-display *ngFor="let ads of [1, 1, 1]"></app-display>
+        </div>
+        <div class="loader" style="height: 100%;" *ngIf="chargue_status == false"><div class="img"><img src="assets/spinner-white-icon.svg" alt=""></div></div>
+    </div>
+
+    <div class="keep-wacthing" *ngIf="viewing.length > 0">
+        <div class="tittle">
+            <h2>Seguir viendo</h2>
+        </div>
+        <div class="series-viewed" *ngFor="let chapters of viewing | slice:0:3" (click)="rlink(chapters.redirect, chapters.minute)">
+            <div class="video"><img class="responsive" referrerpolicy="no-referrer" [src]="chapters.thumnail" loading="lazy"></div>
+            <div class="info">
+                <p>{{chapters.name}}</p>
+                <p>{{chapters.minute}}</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="series">
+        <div class="tittle">
+            <h2>{{this.orderSeries[0].tittle}}</h2>
+        </div>
+
+        <div class="options">
+            <div class="-option" *ngFor="let options of series">
+                <h2 (click)="order(options.tittle)">{{options.tittle}}</h2>
+            </div>
+        </div>
+        
+        <div class="series" *ngIf="chargue_status == true">
+            <div class="series-cover" *ngFor="let i of objects | slice:0:this.orderSeries[0].section.length | slice:0:10" [class]="this.classes[i]" [ngStyle]="{'background-image': 'url(' + this.orderSeries[0].section[i].thumnail + ')'}">
+                <div class="preview">
+                    <div class="img"><img referrerpolicy="no-referrer" [src]="this.orderSeries[0].section[i].thumnail" loading="lazy"></div>
+                    <a class="shadow" [routerLink]="'/serie/preview/' + this.orderSeries[0].section[i]._id + '/' + this.orderSeries[0].section[i].name" (click)="updateViews(this.orderSeries[0].section[i].serie ,this.orderSeries[0].section[i]._id)">
+                        <h2>{{this.orderSeries[0].section[i].name}}</h2>
+                        <h3>{{this.orderSeries[0].section[i].date}}</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="loader" *ngIf="chargue_status == false"><div class="img"><img src="assets/spinner-icon.svg" alt=""></div></div>
+    </section>
+</div>

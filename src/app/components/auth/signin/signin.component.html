@@ -1,0 +1,23 @@
+<div class="container">
+    <form (submit)="singin()">
+        <div class="form-group">
+            <h2 class="tittle">Iniciar sesión</h2>
+        </div>
+        <div class="form-group">
+            <p>Correo Electronico</p>
+            <input type="email" name="email" [(ngModel)]="body.email" required="true" placeholder="Correo Electronico">
+        </div>
+        <div class="form-group">
+            <p>Contraseña</p>
+            <input type="password" name="password" [(ngModel)]="body.password" required="true" placeholder="Contraseña">
+        </div>
+        <div class="form-group">
+            <button (click)="withGoogle()" type="button" [ngStyle]="{'background':'#ffffff', 'color':'#000000'}">Iniciar sesión Con Google</button>
+            <p>Iniciar sesión con google</p>
+        </div>
+        <div class="form-group">
+            <button type="submit">Iniciar sesión</button>
+            <p>¿No tienes cuenta? <a (click)="singChange()">Crea una</a></p>
+        </div>
+    </form>
+</div>

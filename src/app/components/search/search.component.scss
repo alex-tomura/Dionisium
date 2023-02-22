@@ -1,0 +1,142 @@
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    padding: 1rem 5%;
+    display: grid;
+    grid-template-rows: 10% 85%;
+    grid-row-gap: 5%;
+    .searcher{
+        width: 100%; height: 100%;
+        input{
+            width: 100%; height: 100%;
+            background: #0B0B0B;
+            padding: 0 3%;
+            border-bottom: .4rem solid #8d8d8d;
+            font-size: 2.1rem;
+            font-weight: 600;
+            transition: all ease .5s;
+            &:focus, &:valid{
+                border-bottom-color: #6128FF;
+            }
+        }
+    }
+    .found{
+        width: 100%; height: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 18.6%);
+        grid-template-rows: 55% 40%;
+        grid-row-gap: 5%;
+        grid-column-gap: 1.75%;
+        overflow-x: hidden;
+        .serie{
+            width: 100%; height: 100%;
+            grid-row: 1/2;
+            background-size: cover;
+            .preview{
+                width: 100%;
+                height: 100%;
+                background: #7700ff49;
+                backdrop-filter: blur(.5rem);
+                display: flex;
+                flex-wrap: wrap;
+                position: relative;
+                overflow: hidden;
+                .img{
+                    @include flex-center;
+                    width: 100% !important;
+                    height: 100% !important;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                        width: auto;
+                        height: auto;
+                    }
+                }
+                &:hover .shadow, .shadow:hover{
+                    box-shadow: inset 0 -7.5vh 15vh 0 #000000;
+                    padding: 5% 0%;
+                    *{display: block !important;}
+                } 
+                .shadow{
+                    @include flex-center;
+                    align-content: space-between;
+                    flex-wrap: wrap;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0; top: 0;
+                    cursor: pointer;
+                    text-decoration: none;
+                    transition: all ease .5s;
+                    h2{
+                        display: none;
+                        width: 100%;
+                        height: 10%;
+                        text-align: center;
+                        font-size: 1rem;
+                        font-weight: 600;
+                    }
+                    h3{
+                        display: none;
+                        width: 100%;
+                        height: max-content;
+                        font-size: .7rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        .chapters{
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            padding: 1rem;
+            transition: all ease .5s;
+            grid-row: 2/3;
+            .video{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #13131380;
+                width: 100%;
+                height: 80%;
+                img{
+                    max-width: 100%;
+                    max-height: 100%;
+                    width: max-content;
+                    height: max-content;
+                }
+            }
+            .info{
+                width: 100%;
+                height: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            &:hover{
+                background: #13131379;
+            }
+        }
+    }
+}
+@media screen and (max-width:800px) {
+    .found{
+        grid-template-columns: 49% 49% !important;
+        grid-template-rows: 29% 29% 29% !important;
+        grid-gap: 1% !important;
+        .serie{
+            grid-row: span 1 !important;
+        }
+        &>*+*+*+*{
+            &+.serie, &+*+*+*, &+*+*+*+*{
+                display: none !important;
+            }
+        }
+    }
+}

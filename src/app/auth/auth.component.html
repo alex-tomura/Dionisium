@@ -1,0 +1,12 @@
+<div class="container" *ngIf="status == true">
+    <div class="container-auth">
+        <span (click)="close()"><div class="img"><img src="assets/close-icon.svg" alt="X"></div></span>
+        <div class="cover">
+            <div class="img"><img src="assets/sing-background.svg" alt=""></div>
+        </div>
+        <div class="container-auth-sign">
+            <app-signin *ngIf="auth == 'signin'" (changeSing)="changeSing($event)"></app-signin>
+            <app-signup *ngIf="auth == 'signup'" (changeSing)="changeSing($event)"></app-signup>
+        </div>
+    </div>
+</div>

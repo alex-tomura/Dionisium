@@ -1,0 +1,23 @@
+<div class="container">
+    <form (submit)="signup()">
+        <div class="form-group">
+            <h2 class="tittle">Registrase</h2>
+        </div>
+        <div class="form-group">
+            <p>Nombre</p>
+            <input type="text" name="name" [(ngModel)]="body.name" required="true" placeholder="Nombre">
+        </div>
+        <div class="form-group">
+            <p>Correo Electronico</p>
+            <input type="email" name="email" [(ngModel)]="body.email" required="true" placeholder="Correo Electronico">
+        </div>
+        <div class="form-group">
+            <p>Contraseña</p>
+            <input type="password" name="password" [(ngModel)]="body.password" required="true" placeholder="Contraseña">
+        </div>
+        <div class="form-group">
+            <button type="submit">Registrase</button>
+            <p>¿Ya tienes cuenta? <a (click)="singChange()">Iniciar sesión</a></p>
+        </div>
+    </form>
+</div>

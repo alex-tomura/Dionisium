@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="searcher">
+        <input type="text" name="search" [(ngModel)]="body.search" placeholder="buscar" (ngModelChange)="search()" required>
+    </div>
+    <div class="found">
+        <div class="serie" *ngFor="let serie of series" [ngStyle]="{'background-image': 'url(' + serie.thumnail + ')'}">
+            <div class="preview">
+                <div class="img"><img [src]="serie.thumnail" referrerpolicy="no-referrer" alt=""></div>
+                <a class="shadow" [routerLink]="'/serie/preview/' + serie._id + '/' + serie.name">
+                    <h2>{{serie.name}}</h2>
+                    <h3>{{serie.date}}</h3>
+                </a>
+            </div>
+        </div>
+        <div class="chapters" *ngFor="let chapter of chapters" [routerLink]="'/serie/player/' + chapter._id + '/' + chapter.season + '/' + chapter.serie">
+            <div class="video"><img [src]="chapter.thumnail" referrerpolicy="no-referrer" alt=""></div>
+            <div class="info">
+                <p>{{chapter.name}}</p>
+                <p>{{chapter.duration}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<nav class="navbar">
+    <div class="tittle" routerLink="/list">
+        <div class="img"><img src="assets/Dionisium-logo.svg" alt="D"></div>
+        <h2 class="tittle">Dionisium</h2>
+    </div>
+    
+    <div class="navigate">
+    
+        <div class="button-select">
+            <a routerLink="/list">Inicio</a>
+        </div>
+    
+        <div class="button-select">
+            <a routerLink="/serie/search">Buscar</a>
+        </div>
+    
+        <div class="button-select">
+            <a routerLink="/plains">Planes</a>
+        </div>
+    
+        <span class="selected" [ngStyle]="{'left': this.position + '%'}"></span>
+    </div>
+
+    <div class="search-responsive"><a routerLink="/serie/search"><img class="responsive" src="assets/search-icon.svg" alt=""></a></div>
+    
+    <div class="auth" *ngIf="auth_status == false">
+    
+        <div class="button-select">
+            <button (click)="appear('signin')">Iniciar Sesión</button>
+        </div>
+    
+        <div class="button">
+            <button (click)="appear('signup')">Registrarse</button>
+        </div>
+    
+    </div>
+    <div class="user" *ngIf="auth_status == true">
+        <div class="options" *ngIf="status == true">
+            <app-user-options [selected]="avatar"></app-user-options>
+        </div>
+        <div class="img"><img [src]="'assets/' + avatar + '.jpg'" alt="" (click)="this.status = !this.status"></div>
+    </div>
+</nav>

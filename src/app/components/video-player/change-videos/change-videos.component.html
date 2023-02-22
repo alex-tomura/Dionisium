@@ -1,0 +1,8 @@
+<div class="container" *ngIf="season != []">
+    <div class="chapter" *ngFor="let item of season" [routerLink]="'/serie/player/' + item.id + '/' + season_id + '/' + serie_name">
+        <div class="img"><img referrerpolicy="no-referrer" [src]="item.thumnail" loading="lazy" alt=""></div>
+        <div class="name">
+            <h4>{{item.number}} - {{item.name}}</h4>
+        </div>
+    </div>
+</div>

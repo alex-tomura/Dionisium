@@ -1,0 +1,79 @@
+@mixin flex {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center
+}
+.container{
+    @include flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 7000;
+    top: 0; left: 0;
+    background: #ffffff30;
+    &-auth{
+        width: 80%; height: 90%;
+        display: grid; grid-template-columns: 50% 50%;
+        align-items: center;
+        background: #110b1d;
+        position: relative;
+        span{
+            position: absolute;
+            width: 4%; height: max-content;
+            top: 5%; left: 94%;
+            cursor: pointer; transition: transform ease .5s;
+            .img{
+                width: 100%; height: 100%;
+                img{
+                    width: 100%;height: auto;
+                    max-height: 3rem;
+                }
+            }
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+        .cover{
+            width: 100%; height: 100%;
+            grid-column: 1/2;
+            grid-row: 1/2;
+            background: #6c3bf433;
+            .img{
+                overflow: hidden;
+                @include flex; justify-content: center;
+                width: 100%; height: 100%;
+            }
+        }
+        &-sign{
+            width: 100%; height: 100%;
+            grid-column: 2/3;
+            grid-row: 1/2;
+            max-height: 50vw;
+        }
+    }
+}
+@media screen and (max-width:1030px) {
+    .container-auth{
+        grid-template-columns: 100% !important;
+        .cover{
+            display: none !important;
+        }
+        &-sign{
+            grid-column: 1/2 !important;
+            max-height: 80vw !important;
+        }
+    }
+}
+@media screen and (max-width:600px) {
+    .container-auth{
+        width: 100%; height: 100%;
+        span{
+            width: 10%;
+            left: 86%;
+        }
+        &-sign{
+            max-height: 100vw !important;
+        }
+    }
+}

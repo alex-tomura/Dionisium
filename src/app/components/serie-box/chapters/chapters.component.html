@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="chapters" *ngFor="let item of chapters" [routerLink]="'/serie/player/' + item.id + '/' + season + '/' + serie">
+        <div class="video"><img class="responsive" [src]="item.thumnail" referrerpolicy="no-referrer" loading="lazy"></div>
+        <div class="info">
+            <p>{{item.name}}</p>
+            <p>{{item.duration}}</p>
+        </div>
+    </div>
+</div>

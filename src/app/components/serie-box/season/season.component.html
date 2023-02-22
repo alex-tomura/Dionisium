@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="buttons">
+        <button *ngIf="back == true" class="active" (click)="selectSeason('back')">Temporada Anterior</button>
+        <button *ngIf="back == false" class="inactive">Temporada Anterior</button>
+    </div>
+    <div class="buttons">
+        <button *ngIf="next == true" class="active" (click)="selectSeason('next')">Siguiente Temporada</button>
+        <button *ngIf="next == false" class="inactive">Siguiente Temporada</button>
+    </div>
+</div>

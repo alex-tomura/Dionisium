@@ -1,0 +1,18 @@
+<title>{{this.serie}} - episodio {{this.chapter.number}} - {{this.chapter.name}}</title>
+<div class="container">
+    <div class="player" *ngIf="chapter != []">
+        <div class="video">
+            <video controls>
+                <source #video [src]="chapter.secure_url" referrerpolicy="no-referrer" loading="lazy">
+            </video>
+        </div>
+        <div class="tittle">
+            <h1>episodio {{this.chapter.number}} - {{this.chapter.name}}</h1>
+            <h3>{{this.chapter.description}}</h3>
+        </div>
+    </div>
+
+    <div class="change">
+        <app-change-videos [season_id]="season" [serie_name]="serie"></app-change-videos>
+    </div>
+</div>

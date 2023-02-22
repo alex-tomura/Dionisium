@@ -7,7 +7,8 @@ export const environment = {
   adsense: {
     adClient: 'pub-9785777104044346',
     show: true
- }
+ },
+ url_api:'https://dionisium-api.onrender.com/api'
 };
 
 /*

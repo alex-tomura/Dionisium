@@ -3,15 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
-const firebaseConfig = {
-  apiKey: "AIzaSyB6Tqm02OS7gDQZHrTircSESMKrgT9qe6o",
-  authDomain: "dionisium-users.firebaseapp.com",
-  projectId: "dionisium-users",
-  storageBucket: "dionisium-users.appspot.com",
-  messagingSenderId: "590230766611",
-  appId: "1:590230766611:web:92d7bdd96e6c299fbe6be6",
-  measurementId: "G-XLME18EWGQ"
-};
+const firebaseConfig = process.env['firebase'] || {};
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

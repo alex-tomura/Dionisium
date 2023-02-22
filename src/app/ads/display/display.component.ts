@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Banner } from '../../models';
 
 @Component({
   moduleId:'module.id',
@@ -10,7 +9,7 @@ import { Banner } from '../../models';
 })
 export class DisplayComponent implements AfterViewInit{
   @Input() banner:any;
-  showAd = environment.adsense.show;
+  showAd = process.env['adsense'] || {};
   constructor() {}
   ngAfterViewInit() {
     setTimeout(() => {

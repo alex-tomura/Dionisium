@@ -3,14 +3,13 @@ import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
 import { AuthHandler } from '../handlers/auth/auth.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  protected URL:string = environment.url_api;
+  protected URL:string = process.env['url_api'] || '';
   constructor(private http:HttpClient, private handler:AuthHandler, private fireAuth:AngularFireAuth) { }
 
   signin(body:object){

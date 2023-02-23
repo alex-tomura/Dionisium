@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
-const firebaseConfig = process.env['firebase'] || {};
+const firebaseConfig = environment.firebase || {};
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { UserOptionsComponent } from './components/nav/user-options/user-options
 import { FooterComponent } from './components/footer/footer.component';
 import { DisplayComponent } from './ads/display/display.component';
 import { SeriesListComponent } from './components/list/series-list/series-list.component';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [

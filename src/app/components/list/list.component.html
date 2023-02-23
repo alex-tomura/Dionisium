@@ -21,28 +21,6 @@
     </div>
 
     <section class="series">
-        <div class="tittle">
-            <h2>{{this.orderSeries[0].tittle}}</h2>
-        </div>
-
-        <div class="options">
-            <div class="-option" *ngFor="let options of series">
-                <h2 (click)="order(options.tittle)">{{options.tittle}}</h2>
-            </div>
-        </div>
-        
-        <div class="series" *ngIf="chargue_status == true">
-            <div class="series-cover" *ngFor="let i of objects | slice:0:this.orderSeries[0].section.length | slice:0:10" [class]="this.classes[i]" [ngStyle]="{'background-image': 'url(' + this.orderSeries[0].section[i].thumnail + ')'}">
-                <div class="preview">
-                    <div class="img"><img referrerpolicy="no-referrer" [src]="this.orderSeries[0].section[i].thumnail" loading="lazy"></div>
-                    <a class="shadow" [routerLink]="'/serie/preview/' + this.orderSeries[0].section[i]._id + '/' + this.orderSeries[0].section[i].name" (click)="updateViews(this.orderSeries[0].section[i].serie ,this.orderSeries[0].section[i]._id)">
-                        <h2>{{this.orderSeries[0].section[i].name}}</h2>
-                        <h3>{{this.orderSeries[0].section[i].date}}</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="loader" *ngIf="chargue_status == false"><div class="img"><img src="assets/spinner-icon.svg" alt=""></div></div>
+        <app-series-list (order_series)="order($event)" [chargue_status]="chargue_status" [orderSeries]="orderSeries"></app-series-list>
     </section>
 </div>

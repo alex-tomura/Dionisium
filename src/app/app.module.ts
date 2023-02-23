@@ -25,6 +25,7 @@ import { SearchComponent } from './components/search/search.component';
 import { UserOptionsComponent } from './components/nav/user-options/user-options.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DisplayComponent } from './ads/display/display.component';
+import { SeriesListComponent } from './components/list/series-list/series-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DisplayComponent } from './ads/display/display.component';
     SearchComponent,
     UserOptionsComponent,
     FooterComponent,
-    DisplayComponent
+    DisplayComponent,
+    SeriesListComponent
   ],
   imports: [
     BrowserModule,

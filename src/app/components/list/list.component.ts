@@ -9,8 +9,6 @@ import { ListService } from './service/list.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  objects = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  classes = this.seriesOrderPosition();
   viewing:Array<any> = [];
   series:Array<any> = [
     {section:<Array<serie_cover>>[], tittle:'popular'},
@@ -27,23 +25,6 @@ export class ListComponent implements OnInit {
   chargue_status:boolean = false;
 
   constructor(private _service:ListService, private _route:Router) { }
-
-  seriesOrderPosition(){
-    if(window.innerWidth < 600){
-      return ['one', 'two', 'thr', 'one', 'one', 'thr', 'two', 'thr', 'thr', 'thr'];
-    }else if(window.innerWidth < 950){
-      return ['one', 'thr', 'two', 'thr', 'one', 'one', 'two', 'thr', 'thr', 'thr']
-    }
-    return ['one', 'two', 'thr', 'one', 'one', 'two', 'thr', 'thr', 'thr', 'thr'];
-  }
-
-  order(value:string){
-    this.orderSeries = this.series.filter(element => element.tittle == value);
-  }
-
-  updateViews(serie_id:any, cover_id:any){
-    this._service.updateViews({serie_id, cover_id});
-  }
 
   ngOnInit(): void {
     this._service.getList().subscribe((data:any)=>{
@@ -63,6 +44,10 @@ export class ListComponent implements OnInit {
         this.viewing = data.viewing;
       });
     }
+  }
+
+  order(value:string){
+    this.orderSeries = this.series.filter(element => element.tittle == value);
   }
 
   popular_activate(){

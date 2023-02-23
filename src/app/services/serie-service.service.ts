@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SerieServiceService {
-  protected URL:string = process.env['url_api'] || '';
+  protected URL:string = environment.url_api || '';
 
   constructor(private http:HttpClient) { }
 

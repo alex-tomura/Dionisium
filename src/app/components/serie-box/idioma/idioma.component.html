@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="selector" (click)="openOptions()">Idioma - {{this.selection}}</div>
+    <div class="selector" (click)="openOptions()">Idioma - {{this.language_selected}}</div>
     
     <div class="options" *ngIf="status == true">
-        <div class="options-values" *ngFor="let item of language_selected">
+        <div class="options-values" *ngFor="let item of languages">
             <h3 (click)="selectLenguage(item.id)">{{item.name}}</h3>
         </div>
     </div>

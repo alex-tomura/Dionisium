@@ -1,6 +1,6 @@
 <div class="container">
     <div class="searcher">
-        <input type="text" name="search" [(ngModel)]="body.search" placeholder="buscar" (ngModelChange)="search()" required>
+        <input type="text" name="search" [(ngModel)]="search" placeholder="buscar" (ngModelChange)="found()" required>
     </div>
     <div class="found">
         <div class="serie" *ngFor="let serie of series" [ngStyle]="{'background-image': 'url(' + serie.thumnail + ')'}">

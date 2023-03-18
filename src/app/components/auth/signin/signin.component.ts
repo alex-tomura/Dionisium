@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/_auth/auth.service';
 
 @Component({
   selector: 'app-signin',

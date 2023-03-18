@@ -1,7 +1,9 @@
 <div class="container">
     <div class="popular">
-        <div class="preview" *ngIf="chargue_status == true" [ngStyle]="{'left':popular_left + '%'}">
-            <div class="img" *ngFor="let popular_item of popular"><img loading="lazy" [src]="popular_item.thumnail" [routerLink]="'/serie/preview/' + this.popular_item._id + '/' + this.popular_item.name" referrerpolicy="no-referrer" alt=""></div>
+        <div class="preview" *ngIf="chargue_status == true && popular != []">
+            <div class="img" *ngFor="let popular_item of popular">
+                <img *ngIf="popular_item != undefined" loading="lazy" [src]="popular_item.thumnail" [routerLink]="'/serie/preview/' + this.popular_item._id + '/' + this.popular_item.name" referrerpolicy="no-referrer" alt="">
+            </div>
             <app-display *ngFor="let ads of [1, 1, 1]"></app-display>
         </div>
         <div class="loader" style="height: 100%;" *ngIf="chargue_status == false"><div class="img"><img src="assets/spinner-white-icon.svg" alt=""></div></div>

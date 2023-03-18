@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SerieHandler } from 'src/app/handlers/serie/serie.service';
-import { viewed } from 'src/app/models';
-import { SerieServiceService } from 'src/app/services/serie-service.service';
+import { chapters, viewing } from 'src/app/models';
+import { SerieServiceService } from 'src/app/services/_handler/serie-service.service';
 
 @Component({
   selector: 'app-video-player',
@@ -11,11 +11,11 @@ import { SerieServiceService } from 'src/app/services/serie-service.service';
 })
 export class VideoPlayerComponent implements OnInit {
   @ViewChild('video')video!:ElementRef;
-  chapter:any = [];
+  chapter:chapters = {};
   chapter_id:any;
   season:any;
   serie:any;
-  body:viewed = {
+  body:viewing = {
     name:'',
     thumnail:'',
     redirect:<any>this._routes.url,
@@ -33,10 +33,15 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   ngOnInit(){
-    this._service.getChapter({id:this.chapter_id}).subscribe((data:any)=>{
-      this.chapter = data.chapter;
-      this.body.name = data.chapter.name;
-      this.body.thumnail = data.chapter.thumnail;
+    this._service.GetChapter(`
+      description
+      number
+      secure_url
+      thumnail
+    `, this.chapter_id).subscribe((data:any)=>{
+      this.chapter = data.data.get_chapter;
+      this.body.name = `${this.serie} -${this.chapter.number}` || '';
+      this.body.thumnail = this.chapter.thumnail || '';
       this.video.nativeElement.currentTime = this.body.minute;
 
       setInterval(()=>{

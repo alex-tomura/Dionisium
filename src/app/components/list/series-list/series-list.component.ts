@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { serie_cover } from 'src/app/models';
-import { ListService } from '../service/list.service';
+import { get_cover_res } from 'src/app/models';
 
 @Component({
   selector: 'app-series-list',
@@ -8,7 +7,7 @@ import { ListService } from '../service/list.service';
   styleUrls: ['./series-list.component.scss']
 })
 export class SeriesListComponent{
-  @Input() orderSeries:Array<any> = [{section:<Array<serie_cover>>[], tittle:'lo mas popular'}];
+  @Input() orderSeries:get_cover_res = {section:[{}]};
   @Input() chargue_status:boolean = false; @Output() order_series = new EventEmitter();
   series:Array<any> = [
     {tittle:'popular'},{tittle:'nuevo'},{tittle:'shonen'},
@@ -17,14 +16,14 @@ export class SeriesListComponent{
   objects = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   classes = this.seriesOrderPosition();
 
-  constructor(private _service:ListService) { }
+  // constructor(private _service:ListService) { }
 
   order(value:string){
     this.order_series.emit(value);
   }
 
   updateViews(serie_id:any, cover_id:any){
-    this._service.updateViews({serie_id, cover_id});
+    // this._service.updateViews({serie_id, cover_id});
   }
 
   seriesOrderPosition(){

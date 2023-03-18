@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { language_serie } from 'src/app/models';
 
 @Component({
   selector: 'app-idioma',
@@ -6,9 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./idioma.component.scss']
 })
 export class IdiomaComponent{
-  @Input() language_selected:Array<any> = [];
+  @Input() languages?:Array<language_serie> = [];
+  @Input() language_selected:string = '';
   @Output() selected = new EventEmitter();
-  selection = this.language_selected[0] || 'proximamente';
   status:boolean = false;
 
   openOptions(){

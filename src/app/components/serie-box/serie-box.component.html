@@ -1,6 +1,6 @@
 <div class="container">
     <app-serie [serie]="serie" [episode]="episode"></app-serie>
-    <app-idioma [language_selected]="serie.lenguages" (selected)="selectLanguage($event)"></app-idioma>
+    <app-idioma [languages]="serie.lenguages" [language_selected]="language.name || 'proximamente'" (selected)="selectLanguage($event)"></app-idioma>
     <app-chapters [chapters]="chapters" [season]="season._id" [serie]="serie.name"></app-chapters>
     <app-season [seasons]="language.seasons" (selected)="selectSeason($event)"></app-season>
 </div>

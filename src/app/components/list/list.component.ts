@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { serie_cover } from 'src/app/models';
-import { ListService } from './service/list.service';
+import { get_cover_comp, get_cover_res, viewing, serie_cover } from 'src/app/models';
+import { SerieServiceService } from 'src/app/services/_handler/serie-service.service';
 
 @Component({
   selector: 'app-list',
@@ -9,55 +9,56 @@ import { ListService } from './service/list.service';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  viewing:Array<any> = [];
-  series:Array<any> = [
-    {section:<Array<serie_cover>>[], tittle:'popular'},
-    {section:<Array<serie_cover>>[], tittle:'nuevo'},
-    {section:<Array<serie_cover>>[], tittle:'shonen'},
-    {section:<Array<serie_cover>>[], tittle:'seinen'},
-    {section:<Array<serie_cover>>[], tittle:'dobladas'},
-    {section:<Array<serie_cover>>[], tittle:'largas'},
-  ]
-  orderSeries:Array<any> = [
-    {section:<Array<serie_cover>>[], tittle:'lo mas popular'}
-  ];
-  popular:Array<any> = []; popular_left:number = 0;
+  token:any = localStorage.getItem('token');
+  viewing:Array<viewing> = [];
+  series:Array<get_cover_res> = [];
+  orderSeries:get_cover_res = {name:"popular", section:[{}]};
+  popular:Array<serie_cover> = [];
   chargue_status:boolean = false;
 
-  constructor(private _service:ListService, private _route:Router) { }
+  constructor(private _service:SerieServiceService, private _route:Router) { }
 
   ngOnInit(): void {
-    this._service.getList().subscribe((data:any)=>{
-      this.series[0].section = data.mostPopular;
-      this.series[1].section = data.mostNew;
-      this.series[2].section = data.shonen;
-      this.series[3].section = data.seinen;
-      this.series[4].section = data.spanish;
-      this.series[5].section = data.fiveSeasons;
-      this.orderSeries[0].section = data.mostPopular;
-      this.popular = data.popular_preview;
-      this.popular_activate();
+    this.get_cover_gql([0, 1, 2, 3, 4, 5,]).subscribe((data:any)=>{
+      this.series = get_cover_comp(data.data.get_cover);
+      this.order('popular');
       this.chargue_status = true;
+      let num:number = Math.trunc(Math.random() * 10);
+      this.popular.push(this.series[0].section[num] || this.series[0].section[0] || {});
+      this.popular.push(this.series[1].section[num] || this.series[0].section[0] || {});
     });
+    
     if(localStorage.getItem('token')){
-      this._service.getViewing().subscribe((data:any)=>{
-        this.viewing = data.viewing;
+      this._service.GetViewing(`
+        minute
+        name
+        redirect
+        thumnail
+      `, this.token).subscribe((data:any)=>{
+        this.viewing = data.data.get_viewing;
       });
     }
   }
 
+  get_cover_gql(types:Array<number>){
+    let limit = 10; if(window.innerWidth < 950 && window.innerWidth > 600){limit = 11}
+    return this._service.GetSeries(`
+      name 
+      section {
+        _id
+        name
+        thumnail
+        serie
+        date
+      }
+    `, types, limit);
+  }
+
   order(value:string){
-    this.orderSeries = this.series.filter(element => element.tittle == value);
+    this.orderSeries = this.series.filter(element => element.name == value)[0] || {name:value, __typename:value, section:[]};
   }
 
-  popular_activate(){
-    setInterval(()=>{
-      if(this.popular_left <= -500){this.popular_left = 100};
-      this.popular_left -= 100;
-    }, 5000);
-  }
-
-  rlink(route:string, param:string){
+  rlink(route:string, param:string | number){
     this._route.navigate([route], {queryParams:{time:param}});
   }
 }

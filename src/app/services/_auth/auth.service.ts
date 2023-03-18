@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth'
-import { AuthHandler } from '../handlers/auth/auth.service';
+import { AuthHandler } from '../../handlers/auth/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AuthService {
 
-  protected URL:string = environment.url_api || '';
+  protected URL:string = environment.url_api._auth || '';
   constructor(private http:HttpClient, private handler:AuthHandler, private fireAuth:AngularFireAuth) { }
 
   signin(body:object){

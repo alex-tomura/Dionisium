@@ -1,45 +1,55 @@
 .container{
-    width: 100%; height: 96vh;
+    width: 100%; height: max-content; min-height: 96vh;
     display: grid; grid-template-columns: 100%;
-    grid-template-rows: repeat(8, 11.75%); grid-row-gap: 1%;
-    .chapter{
+    grid-template-rows: 6% minmax(93%, max-content); grid-column-gap: 1%;
+    .tittle{
         width: 100%; height: 100%;
-        grid-row: span; grid-column: 1/2;
-        display: grid; grid-template-columns: 45% 58%;
-        grid-template-rows: 100%; grid-column-gap: 2.5%;
-        padding: 5% 4.5%;
-        cursor: pointer;
-        .img{
-            display: flex; justify-content: center; align-items: center;
-            width: 100%; height: 100%;
-            background: #272727;
-        }
-        .name{
-            width: 100%; height: 100%;
-            display: flex; align-items: center;
-            h4{
-                width: 100%;
-                height: auto;
-                max-height: 100%;
-                font-size: .8rem;
-                transition: all ease .5s;
-                overflow-wrap: break-word;
-            }
-        }
-        &:hover .name h4{
-            color: #6128FF;
+        grid-row: 1/2; grid-column: 1/2;
+        h3{
+            font-size: 1.5rem;
         }
     }
-}
-@media screen and (max-width:1270px) and (min-width:900px) {
-    .chapter{
-        grid-template-columns: 100% !important;
-        .name{display: none !important;}
+    .chapters{
+        width: 100%; height: max-content; min-height: 100%;
+        grid-row: 2/3; grid-column: 1/2;
+        display: grid; grid-template-columns: 100%;
+        grid-auto-rows: 9.3vh; grid-row-gap: 1.2vh;
+        .chapter{
+            width: 100%; height: 100%;
+            grid-row: span 1; grid-column: 1/2;
+            display: grid; grid-template-columns: 45% 52.5%;
+            grid-template-rows: 100%; grid-column-gap: 2.5%;
+            cursor: pointer;
+            .img{
+                display: flex; justify-content: center; align-items: center;
+                width: 100%; height: 100%;
+                background: #1b1b1b;
+            }
+            .name{
+                width: 100%; height: 100%;
+                display: flex; align-items: center;
+                h4{
+                    width: 100%;
+                    height: auto;
+                    max-height: 100%;
+                    font-size: .9rem;
+                    transition: color ease .5s;
+                    overflow-wrap: break-word;
+                }
+            }
+            &:hover .name h4{
+                color: #6128FF;
+            }
+        }
     }
 }
 @media screen and (max-width:900px) {
+    .tittle{
+        padding: 0 2% !important;
+    }
     .chapter{
-        padding: 0 !important;
+        padding: 0 2% !important;
+        grid-template-columns: max-content auto !important;
         .img{
             background: none !important;
         }

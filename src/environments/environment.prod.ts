@@ -1,10 +1,14 @@
 export const environment = {
-  production: true,
+  production: false,
   adsense: {
     adClient: 'pub-9785777104044346',
     show: true
   },
-  url_api:'https://dionisium-api.onrender.com/api',
+  url_api:{
+    _auth:'https://dionisium-auth.onrender.com/api',
+    _handler:'https://dionisium-handler.onrender.com',
+    _update:'https://dionisium-update.onrender.com/api'
+  },
   firebase:{
   apiKey: "AIzaSyB6Tqm02OS7gDQZHrTircSESMKrgT9qe6o",
   authDomain: "dionisium-users.firebaseapp.com",

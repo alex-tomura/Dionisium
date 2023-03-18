@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +27,8 @@ import { UserOptionsComponent } from './components/nav/user-options/user-options
 import { FooterComponent } from './components/footer/footer.component';
 import { DisplayComponent } from './ads/display/display.component';
 import { SeriesListComponent } from './components/list/series-list/series-list.component';
-import { environment } from 'src/environments/environment.prod';
+import { GraphQLModule } from './graphql.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -54,8 +56,10 @@ import { environment } from 'src/environments/environment.prod';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    GraphQLModule
   ],
   providers: [
     {

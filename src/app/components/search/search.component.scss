@@ -19,7 +19,7 @@
             border-bottom: .4rem solid #8d8d8d;
             font-size: 2.1rem;
             font-weight: 600;
-            transition: all ease .5s;
+            transition: border-bottom-color ease .5s;
             &:focus, &:valid{
                 border-bottom-color: #6128FF;
             }
@@ -96,7 +96,7 @@
             height: 100%;
             cursor: pointer;
             padding: 1rem;
-            transition: all ease .5s;
+            transition: background ease .5s;
             grid-row: 2/3;
             .video{
                 display: flex;

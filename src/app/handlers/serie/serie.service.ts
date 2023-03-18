@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { map, Subject } from 'rxjs';
-import { viewed } from 'src/app/models';
-import { SerieServiceService } from 'src/app/services/serie-service.service';
+import { Subject } from 'rxjs';
+import { viewing } from 'src/app/models';
+import { SerieServiceService } from 'src/app/services/_handler/serie-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +10,16 @@ export class SerieHandler {
 
   constructor(private _serie_service:SerieServiceService) { }
 
-  keep_wacthing_object = new Subject<viewed>();
+  keep_wacthing_object = new Subject<viewing>();
   data:any; 
   v = this.keep_wacthing_object.subscribe(data=>{this.data = data});
 
-  next(body:viewed){
+  next(body:viewing){
     this.keep_wacthing_object.next(body);
   }
 
   save(){
+    console.log(this.data);
     this._serie_service.updateViewing(this.data);
   }
 }

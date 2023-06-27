@@ -6,8 +6,8 @@ export const environment = {
   },
   url_api:{
     _auth:'https://dionisium-auth.onrender.com/api',
-    // _handler:'https://dionisium-handler.onrender.com',
-    _handler:'http://localhost:5560',
+    _handler:'https://dionisium-handler.onrender.com',
+    // _handler:'http://localhost:5560',
     _update:'https://dionisium-update.onrender.com/api'
   },
   firebase:{

@@ -1,25 +1,43 @@
-<div class="container" *ngIf="orderSeries.name">
+<div class="container" *ngIf="cover_selected.name != ''">
     <div class="tittle">
-        <h2>{{this.orderSeries.name}}</h2>
+        <h2>Categorias</h2>
     </div>
 
-    <div class="options">
-        <div class="-option" *ngFor="let options of series">
-            <h2 (click)="order(options.tittle)">{{options.tittle}}</h2>
+    <form class="options">
+        <div class="-types">
+            <button class="-selected" (click)="actions_list.showTypes = !actions_list.showTypes">{{order_list_properties.type}} <img src="assets/down-icon.png" alt=">" class="responsive"></button>
+            <div class="-types-selector" *ngIf="actions_list.showTypes">
+                <div class="-option" *ngFor="let opt of types">
+                    <button (click)="order_list_properties.type = opt.value; sendNewOrder();">{{opt.name}}</button>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="-order">
+            <div class="-modes">
+                <button class="-selected" (click)="actions_list.showModes = !actions_list.showModes">{{order_list_properties.mode}} <img src="assets/down-icon.png" alt=">" class="responsive"></button>
+                <div class="-modes-selector" *ngIf="actions_list.showModes">
+                    <div class="-option" *ngFor="let opt of modes">
+                        <button (click)="order_list_properties.mode = opt.value; sendNewOrder();">{{opt.name}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="-to">
+                <button [ngClass]="actions_list.orientation" (click)="changueOrientation(); sendNewOrder();"><img src="assets/arrow-list-icon.svg" alt=">" class="responsive"></button>
+            </div>
+        </div>
+    </form>
     
-    <div class="series" *ngIf="chargue_status == true && orderSeries.section != undefined && orderSeries.section.length > 0">
-        <div class="series-cover" *ngFor="let i of objects | slice:0:this.orderSeries.section.length | slice:0:10" [class]="this.classes[i]" [ngStyle]="{'background-image': 'url(' + this.orderSeries.section[i].thumnail + ')'}">
+    <div class="series" *ngIf="chargue_status == true && cover_selected.section != [] && cover_selected.section.length > 0">
+        <div class="-cover" *ngFor="let i of objects | slice:0:this.cover_selected.section.length | slice:0:this.classes.length" [class]="this.classes[i]" [ngStyle]="{'background-image': 'url(' + this.cover_selected.section[i].PCCover+ ')'}">
             <div class="preview">
-                <div class="img"><img referrerpolicy="no-referrer" [src]="this.orderSeries.section[i].thumnail" loading="lazy"></div>
-                <a class="shadow" [routerLink]="'/serie/preview/' + this.orderSeries.section[i]._id + '/' + this.orderSeries.section[i].name" (click)="updateViews(this.orderSeries.section[i].serie ,this.orderSeries.section[i]._id)">
-                    <h2>{{this.orderSeries.section[i].name}}</h2>
-                    <h3>{{this.orderSeries.section[i].date}}</h3>
+                <div class="img"><img referrerpolicy="no-referrer" [src]="this.cover_selected.section[i].PCCover" loading="lazy"></div>
+                <a class="shadow" [routerLink]="'/serie/preview/' + this.cover_selected.section[i]._id + '/' + this.cover_selected.section[i].name" (click)="updateViews(this.cover_selected.section[i].serie ,this.cover_selected.section[i]._id)">
+                    <h4>{{this.cover_selected.section[i].name}}</h4>
+                    <p>{{this.cover_selected.section[i].date}}</p>
                 </a>
             </div>
         </div>
     </div>
     
-    <div class="loader" *ngIf="chargue_status == false || orderSeries.section.length <= 0"><div class="img"><img src="assets/spinner-icon.svg" alt=""></div></div>
+    <div class="loader" *ngIf="chargue_status == false || cover_selected.section.length <= 0"><div class="img"><img src="assets/spinner-icon.svg" alt=""></div></div>
 </div>

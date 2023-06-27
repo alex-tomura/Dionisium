@@ -1,24 +1,26 @@
-<footer>
+<footer [ngStyle]="{'background': 'linear-gradient(' + background + ' 0%,' + background + ' 10%, #6128ff8e 100%)'}">
     <section class="data">
         <div class="img"><img src="assets/Dionisium-logo.svg" alt=""></div>
         <div class="links">
-            <h4>enlaces</h4>
+            <h4 class="tittle">enlaces</h4>
             <a routerLink="">Preguntas Frecuentes</a>
             <a routerLink="">Politica de Privacidad</a>
             <a routerLink="">Terminos Legales</a>
             <a routerLink="">cuenta</a>
             <a routerLink="">inicio</a>
         </div>
-        <div class="info">
-            <h3 class="tittle">sobre nosotros</h3>
-            <h3>adsadda@gmail.com</h3>
-            <h3>5555-5555-555</h3>
-            <h3>argentina, buenos aires</h3>
-        </div>
     </section>
-    <section class="down">
+
+    <div class="info">
+        <h4 class="tittle">sobre nosotros</h4>
+        <p>adsadda@gmail.com</p>
+        <p>5555-5555-555</p>
+        <p>argentina, buenos aires</p>
+    </div>
+
+    <section class="medias">
         <div class="social-media">
-            <div class="tittle"><h3>redes sociales</h3></div>
+            <div class="tittle"><h4 class="tittle">redes sociales</h4></div>
             <div class="-medias" *ngFor="let media of medias">
                 <div class="img"><img [src]="media.img" alt=""></div>
             </div>

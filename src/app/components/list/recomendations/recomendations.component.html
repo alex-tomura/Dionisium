@@ -1,0 +1,14 @@
+<div class="container" *ngIf="series.length != 0 && series != [{}]">
+    <div class="tittle">
+        <h2>Para ti</h2>
+    </div>
+
+    <div class="series" *ngIf="series != [{}]">
+        <div class="-cover" *ngFor="let serie of series" [routerLink]="'/serie/preview/' + serie._id + '/' + serie.name">
+            <img [src]="serie.MovileCover" alt="" loading="lazy">
+            <div class="-tittle">
+                <h4>{{serie.name}}</h4>
+            </div>
+        </div>
+    </div>
+</div>

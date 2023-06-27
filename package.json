@@ -19,14 +19,18 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@apollo/client": "^3.0.0",
     "@firebase/auth": "^0.21.1",
     "apollo-angular": "^4.2.1",
     "firebase": "^9.16.0",
+    "graphql": "^16",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@apollo/client": "^3.0.0",
-    "graphql": "^16"
+    "video.js": "^8.0.4",
+    "videojs-contrib-dash": "^5.1.1",
+    "videojs-contrib-hls": "^5.15.0",
+    "videojs-flash": "^2.2.1",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.1",

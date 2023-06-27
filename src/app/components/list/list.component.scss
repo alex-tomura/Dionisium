@@ -1,15 +1,16 @@
+@import '../../vars.scss';
 @mixin flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .container{
-    width: 100%; height: max-content;
+    width: 100vw; height: max-content;
     display: grid; grid-template-columns: 100%;
-    grid-template-rows: 60vh max-content max-content;
-    overflow-x: hidden; overflow: visible;
+    grid-auto-rows: max-content;
+    overflow-x: hidden; overflow-y: visible;
     justify-items: center;
-    grid-row-gap: 1rem;
+    grid-row-gap: 5vh;
     & div.tittle{
         grid-row: 1/2;
         width: 100%; height: 100%;
@@ -18,14 +19,14 @@
         h2{
             width: 100%; height: max-content; 
             font-weight: 600; font-size: 1.5rem;
-            border-bottom: .3rem solid #6128FF;
+            border-bottom: .3rem solid $morado1;
         }
     }
 }
 .popular{
     width: 100%; height: 60vh;
     overflow: hidden;
-    background: #6128FF;
+    background: $morado1;
     background-image: url('../../../assets/home-popular-background.svg');
     background-size: cover;
     background-position: center;
@@ -66,7 +67,7 @@
         transition: background ease .5s;
         .video{
             @include flex-center;
-            background: #13131380;
+            background: $background4;
             width: 100%; height: 80%;
         }
         .info{
@@ -74,12 +75,12 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         &:hover{
-            background: #13131379;
+            background: $background4;
         }
     }
 }
 section.series{
-    width: max-content; height: max-content; grid-row: 3/4;
+    width: max-content; height: max-content;
 }
 @media screen and (max-width:950px) {
     .keep-wacthing{

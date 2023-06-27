@@ -2,13 +2,30 @@
 <div class="container">
     <div class="player" *ngIf="chapter != []">
         <div class="video">
-            <video controls #video [src]="chapter.secure_url" referrerpolicy="no-referrer" loading="lazy" width="360"></video>
+            <iframe #video [src]="chapter.secure_url || '' | safe" referrerpolicy="no-referrer" loading="lazy"></iframe>
         </div>
-        <div class="tittle">
-            <h1>{{this.serie}} - episodio {{this.chapter.number}}</h1>
-            <h3>{{this.chapter.description}}</h3>
+        <div class="-info">
+            <div class="-tittle">
+                <h1>{{this.serie}} <b>- episodio {{this.chapter.number}}</b></h1>
+            </div>
+            <div class="-description">
+                <div class="-description-tittle">
+                    <h3>{{this.chapter.name}}</h3>
+                    <small>chapter {{this.chapter.number}}</small>
+                </div>
+                <div class="-description-info" #description [ngStyle]="{'height': textZ}">
+                    <p>{{this.chapter.description}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos quo corrupti, inventore repellendus ullam excepturi vel, odio sint amet, aliquam architecto numquam quasi ut atque! Omnis nostrum ut assumenda labore a laboriosam vel ab maxime rem? Inventore, animi. Sequi, aperiam maiores? Sequi quos, corrupti officiis quaerat voluptatem libero consequatur atque aperiam. A aliquam amet aliquid ea voluptas reprehenderit! Adipisci qui autem sed aspernatur odit rem praesentium deleniti velit ab dolor eligendi quam a voluptatem vitae, iste veritatis dicta nostrum molestias cum? Laboriosam officiis officia, ullam possimus nam aliquid eos natus distinctio nisi impedit quidem vitae, fuga deserunt maiores minus aspernatur!</p>
+                </div>
+                <div class="-description-see-more" *ngIf="descriptionZ == true">
+                    <button (click)="seeMore()">
+                        <b *ngIf="textZ == '3vh'">more...</b>
+                        <b *ngIf="textZ == 'max-content'">less..</b>
+                    </button>
+                </div>
+            </div>
+            <div style="width: 100%; height: max-content;" id="disqus_thread"></div>
         </div>
-    </div>
+        </div>
 
     <div class="change">
         <app-change-videos [season_id]="season" [serie_name]="serie"></app-change-videos>

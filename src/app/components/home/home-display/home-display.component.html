@@ -1,0 +1,25 @@
+<div class="container">
+    <section class="-info">
+        <div class="-tittle">
+            <div class="img"><img src="assets/Dionisium-logo.svg" alt=""></div>
+            <h1>Dionisium</h1>
+            <p>El Mejor Servicio de Anime</p>
+        </div>
+        <div class="-slogan">
+            <h3>Disfurta de los Mejores Animes en Todo Momento</h3>
+        </div>
+        <div class="-buttons">
+            <button class="primary" routerLink="/list">Descúbrelo</button>
+            <button class="secondary" (click)="appear()">Registrate</button>
+        </div>
+    </section>
+    <section class="-images">
+        <div class="-animation">
+            <div class="line"></div>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span *ngIf="width > 600"></span><span  *ngIf="width > 600"></span><span *ngIf="width > 600"></span><span *ngIf="width > 600"></span><span *ngIf="width > 600"></span>
+        </div>
+        <div class="AI"><img class="responsive" src="assets/AI-image.svg" alt=""></div>
+    </section>
+</div>

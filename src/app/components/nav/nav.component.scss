@@ -38,7 +38,7 @@
         position: relative;
         .button-select{
             width: 100%; height: 100%;
-            transition: ease 1s;
+            transition: ease .5s;
             transition-property: background transform;
             &:hover{
                 background: #131313;
@@ -48,7 +48,7 @@
                 @include flex; justify-content: center;
                 width: 100%; height: 100%;
                 text-decoration: none;
-                font-size: .9rem;
+                font-size: 1.2vh;
             }
         }
         .selected{
@@ -74,20 +74,19 @@
                 background: transparent;
                 border-radius: 100rem;
                 cursor: pointer;
-                transition: ease 1s;
+                transition: ease .5s;
                 transition-property: background letter-spacing transform;
                 &:hover{
                     background: #131313;
                     transform: scale(1.1);
                 }
-                font-size: .8vw;
+                font-size: 1.2vh;
             }
         }
         .button button{
             background: #6128FF;
             &:hover{
                 transform: scale(1.1);
-                letter-spacing: .05rem;
             }
         }
     }
@@ -115,9 +114,9 @@
     .navbar h2.tittle{
         display: none;
     }
-    .auth>*>button{
-        font-size: 1vw !important;
-    }
+    // .auth>*>button{
+    //     font-size: 1vh !important;
+    // }
 }
 @media screen and (max-width:950px) {
     .navbar{
@@ -131,7 +130,7 @@
         }
     }
     .auth>*>button{
-        font-size: 1.2vw !important;
+        font-size: 1.25vw !important;
     }
 }
 @media screen and (max-width:600px) {
@@ -165,6 +164,9 @@
         width: 30vw !important;
         .button{
             width: 100% !important;
+            button{
+                font-size: 1.2vh !important;
+            }
         }
     }
 }

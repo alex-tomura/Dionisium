@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AuthService } from './services/_auth/auth.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'dionisium';
   token = localStorage.getItem('token');
   touch:boolean = this.isTouch();
+  background:string = '#00000000';
 
   constructor(private _auth_service:AuthService){}
 

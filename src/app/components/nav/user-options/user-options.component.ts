@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/_auth/auth.service';
 
 @Component({
   selector: 'app-user-options',
   templateUrl: './user-options.component.html',
-  styleUrls: ['./user-options.component.scss']
+  styleUrls: ['./user-options.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserOptionsComponent {
   @Input() selected:any;

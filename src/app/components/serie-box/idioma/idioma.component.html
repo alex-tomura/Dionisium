@@ -1,9 +1,10 @@
 <div class="container">
-    <div class="selector" (click)="openOptions()">Idioma - {{this.language_selected}}</div>
-    
-    <div class="options" *ngIf="status == true">
-        <div class="options-values" *ngFor="let item of languages">
-            <h3 (click)="selectLenguage(item.id)">{{item.name}}</h3>
-        </div>
+    <div class="selected">
+        <h4 (click)="status = !status">{{language_selected.language}}</h4>
     </div>
+    <form class="selector" *ngIf="status == true">
+        <div class="form-group" *ngFor="let item of languages">
+            <label (click)="selectLanguage(item)" class="option-style {{item == language_selected}}">{{item.language}}</label>
+        </div>
+    </form>
 </div>

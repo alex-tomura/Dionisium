@@ -1,0 +1,20 @@
+<div class="container" [ngStyle]="{'background':_data._values.background}">
+    <section class="-image">
+        <div class="img">
+            <img *ngIf="width > 900" [src]="_data._serie.PCCover || ''" alt="">
+            <img *ngIf="width < 900" [src]="_data._serie.MovileCover || ''" alt="">
+        </div>
+    </section>
+    <section class="-info">
+        <div class="-tittle">
+            <h4>{{_data._serie.name}}</h4>
+            <p>{{_data._serie.date}}</p>
+        </div>
+        <div class="-description">
+            <p>{{_data._serie.description}}</p>
+        </div>
+        <div class="-button">
+            <button [ngClass]="_data._values.button" [routerLink]="'/serie/preview/' + _data._serie._id + '/' + _data._serie.name">Ver Capitulo 1</button>
+        </div>
+    </section>
+</div>

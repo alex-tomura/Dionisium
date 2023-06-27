@@ -2,9 +2,11 @@
     <div class="popular">
         <div class="preview" *ngIf="chargue_status == true && popular != []">
             <div class="img" *ngFor="let popular_item of popular">
-                <img *ngIf="popular_item != undefined" loading="lazy" [src]="popular_item.thumnail" [routerLink]="'/serie/preview/' + this.popular_item._id + '/' + this.popular_item.name" referrerpolicy="no-referrer" alt="">
+                <img *ngIf="popular_item != undefined" loading="lazy" [src]="popular_item.PCCover" [routerLink]="'/serie/preview/' + this.popular_item._id + '/' + this.popular_item.name" referrerpolicy="no-referrer" alt="">
             </div>
-            <app-display *ngFor="let ads of [1, 1, 1]"></app-display>
+            <app-display></app-display>
+            <app-display></app-display>
+            <app-display></app-display>
         </div>
         <div class="loader" style="height: 100%;" *ngIf="chargue_status == false"><div class="img"><img src="assets/spinner-white-icon.svg" alt=""></div></div>
     </div>
@@ -22,7 +24,15 @@
         </div>
     </div>
 
+    <app-adverts [_data]="{_values:{background:'#00000000', button:'accent'}, _serie:cover_selected.section[0]}"></app-adverts>
+
     <section class="series">
-        <app-series-list (order_series)="order($event)" [chargue_status]="chargue_status" [orderSeries]="orderSeries"></app-series-list>
+        <app-series-list (order_series)="DefineOrder($event)" [chargue_status]="chargue_status" [covers_list]="covers_list"></app-series-list>
     </section>
+
+    <app-adverts [_data]="{_values:{background:'#4313c7', button:'white'}, _serie:cover_selected.section[0]}"></app-adverts>
+
+    <app-recomendations></app-recomendations>
+
+    <app-adverts [_data]="{_values:{background:'#F1414E', button:'white'}, _serie:cover_selected.section[0]}"></app-adverts>
 </div>

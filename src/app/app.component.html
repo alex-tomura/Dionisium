@@ -1,10 +1,7 @@
-<app-nav></app-nav>
-<div class="purple"></div>
-<div class="rose"></div>
+<app-nav (event)="this.background = $event.background"></app-nav>
 <div class="touch" *ngIf="touch == true"></div>
 <div class="container">
     <router-outlet></router-outlet>
-    <app-footer></app-footer>
+    <app-footer [background]="background"></app-footer>
 </div>
 <app-auth></app-auth>
-<script data-ad-client="pub-9785777104044346" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

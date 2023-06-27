@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { seasons } from 'src/app/models';
 import { SerieServiceService } from 'src/app/services/_handler/serie-service.service';
 
 @Component({
@@ -7,29 +8,32 @@ import { SerieServiceService } from 'src/app/services/_handler/serie-service.ser
   styleUrls: ['./change-videos.component.scss']
 })
 export class ChangeVideosComponent implements OnInit {
-  @Input() season_id:any;
+  @Input() season_id:string = '';
   @Input() serie_name:any;
-  season:any = [];
-  tittle:number = 0;
+  season:seasons = {};
 
   constructor(private _service:SerieServiceService) { }
 
   ngOnInit(): void {
     this._service.GetSeasons(`
-      number
-      chapters {
-        id
-        thumnail
         number
-        name
-      }
+        chapters {
+          name
+          thumb
+          number
+          chapter
+        }
     `, this.season_id).subscribe((data:any)=>{
-      this.tittle = data.data.get_season.number;
-      this.season = data.data.get_season.chapters.sort((a:any, b:any) => {
+      this.season = data.data.get_season;
+      let season = {...this.season};
+      let chapters =  [...this.season.chapters || []];
+      season.chapters = chapters.sort((a?:any, b?:any) => {
         if(a.number > b.number){return 1;}
         if(a.number < b.number){return -1;}
+        console.log(this.season.chapters?.values);
         return 0;
-      });;
+      });
+      this.season = season;
     });
   }
 

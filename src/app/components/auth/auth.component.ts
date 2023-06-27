@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { AuthHandler } from '../handlers/auth/auth.service';
+import { AuthHandler } from 'src/app/handlers/auth/auth.service';
 
 @Component({
   selector: 'app-auth',

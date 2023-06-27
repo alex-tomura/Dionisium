@@ -13,10 +13,14 @@
             </div>
         </div>
         <div class="chapters" *ngFor="let chapter of chapters" [routerLink]="'/serie/player/' + chapter._id + '/' + chapter.season + '/' + chapter.serie">
-            <div class="video"><img [src]="chapter.thumnail" referrerpolicy="no-referrer" alt=""></div>
-            <div class="info">
+            <div class="video">
+                <img class="responsive" [src]="chapter.thumnail" referrerpolicy="no-referrer" loading="lazy">
+                <div class="-time">
+                    <p>{{chapter.duration}}</p>
+                </div>
+            </div>
+            <div class="-info">
                 <p>{{chapter.name}}</p>
-                <p>{{chapter.duration}}</p>
             </div>
         </div>
     </div>

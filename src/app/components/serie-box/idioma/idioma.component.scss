@@ -1,3 +1,4 @@
+@import '../../../vars.scss';
 @mixin flex-center {
     display: flex;
     align-items: center;
@@ -5,57 +6,59 @@
 }
 .container{
     width: 100%;
-    height: 6rem;
+    height: 10vh;
     position: relative;
-    .selector{
-        @include flex-center;
-        justify-content: flex-start;
+    padding: 0 2.5%;
+    .selected{
         width: 100%;
         height: 100%;
-        padding: 0 5%;
-        font-size: 2.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: color ease .5s;
-        &:hover{
-            color: #6128FF;
+        h4{
+            @include flex-center();
+            justify-content: flex-start;
+            width: 100%; height: 100%;
+            padding: 0 2.5%;
+            cursor: pointer;
+            font-size: 3.5vh;
+            font-weight: 600;
+            transition: color ease .5s;
+            &:hover{
+                color: $morado1;
+            }
         }
     }
-    .options{
-        width: 40%;
-        height: auto;
-        max-height: 12rem;
-        position: absolute;
-        background: #19388b;
-        left: 5%;
+    form.selector{
+        height: max-content; width: 50%;
+        max-height: calc(4*7vh);
+        top: 100%;
+        position: absolute; z-index: 3000;
         overflow-x: hidden;
         overflow-y: scroll;
-        &::-webkit-scrollbar{background: #0f235c;}
+        background: $morado3;
+        &::-webkit-scrollbar{background: $morado3}
         &::-webkit-scrollbar-thumb{background: #ffffff;}
-        &-values{
-            width: 100%;
-            height: 4rem;
-            padding: 0 1rem;
-            cursor: pointer;
-            transition: background ease .5s;
-            &:hover{
-                background: #0f235c;
-            }
-            h3{
-                @include flex-center;
+        .form-group{
+            width: 100%; height: 7vh;
+            .option-style{
+                @include flex-center();
                 justify-content: flex-start;
-                width: 100%;
-                height: 100%;
+                height: 100%; width: 100%;
+                background: $morado2;
+                padding: 0 2.5%;
+                cursor: pointer;
+                transition: background ease .5s;
+                font-size: 2vh;
+                &:hover{
+                    background: $morado1;
+                }
+                &.true{
+                    background: $morado3 !important;
+                }
             }
         }
     }
 }
-@media screen and (max-width:600px) {
-    .selector{
-        font-size: 2rem !important;
-    }
-    .options{
-        width: 100% !important;
-        left: 0 !important;
+@media screen and (max-width:900px) {
+    form.selector{
+        width: 95% !important;
     }
 }

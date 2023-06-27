@@ -33,15 +33,29 @@ export interface language_serie {
 // COVER
 export interface serie_cover{
     _id?:string | number,
+    PCCover?:string,
+    MovileCover?:string,
     name?:string,
-    thumnail?:string,
-    serie?:any,
+    description?:string,
+    date?:string,
     views?:number,
-    gender?:Array<string>,
-    date?:string, 
-    dateMs?:string,
-    languages?:Array<object>,
-    seasons?:number
+    seasons?:number,
+    languages?: Array<languages_covers>,
+    type?:string,
+    tags?:Array<string>,
+    serie?:string | number,
+    createdAt?:string | number,
+    updatedAt?:string | number
+}
+
+export interface languages_covers {
+    language?:string,
+    seasons?:Array<seasons_languages_covers>
+}
+
+export interface seasons_languages_covers {
+    season?:string | number,
+    number?:number
 }
 
 export interface get_cover_res{
@@ -50,16 +64,16 @@ export interface get_cover_res{
     section:Array<serie_cover>
 }
 
-export function get_cover_comp(data:any){
-    const des:Array<get_cover_res> = [];
-    for (let x = 0; x < data.length; x++) {
-        des.push({__typename:'empty', name:data[x].name, section:[]});
-        for (let y = 0; y < data[x].section.length; y++) {
-            des[x].section.push(data[x].section[y]);
-        }
-    }
-    return des;
-}
+// export function get_cover_comp(data:any){
+//     const des:Array<get_cover_res> = [];
+//     for (let x = 0; x < data.length; x++) {
+//         des.push({__typename:'empty', name:data[x].name, section:[]});
+//         for (let y = 0; y < data[x].section.length; y++) {
+//             des[x].section.push(data[x].section[y]);
+//         }
+//     }
+//     return des;
+// }
 
 // LANGUAGE
 
@@ -85,10 +99,10 @@ export interface seasons {
 }
 
 export interface chapters_seasons {
-    id?: any,
+    chapter?: any,
     name?: string,
     duration?: string,
-    thumnail?: string,
+    thumb?: string,
     number?: number
 }
 
@@ -97,13 +111,14 @@ export interface chapters_seasons {
 export interface chapters {
     _id?: any,
     name?: string,
-    number?: number,
-    description?: string,
     secure_url?: string,
-    thumnail?: string,
+    description?: string,
+    score?:number,
+    number?: number,
     duration?: string,
-    season?: any,
+    thumnail?: string,
     serie?: string
+    season?: any,
 }
 
 // ADS

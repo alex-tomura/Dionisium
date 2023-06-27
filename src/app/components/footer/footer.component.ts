@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent{
+  @Input() background:string = '#00000000';
   medias = [
     {name:'instagram', img:'assets/instagram-icon.svg', url:''},
     {name:'twitter', img:'assets/twitter-icon.svg', url:''},

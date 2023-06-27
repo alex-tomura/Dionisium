@@ -1,3 +1,4 @@
+@import '../../../vars.scss';
 .container{
     width: 100%; height: max-content; min-height: 96vh;
     display: grid; grid-template-columns: 100%;
@@ -6,7 +7,7 @@
         width: 100%; height: 100%;
         grid-row: 1/2; grid-column: 1/2;
         h3{
-            font-size: 1.5rem;
+            font-size: 2.1vh;
         }
     }
     .chapters{
@@ -23,22 +24,26 @@
             .img{
                 display: flex; justify-content: center; align-items: center;
                 width: 100%; height: 100%;
-                background: #1b1b1b;
+                overflow: hidden; border-radius: .5vh;
+                img{
+                    width: 100% !important;
+                    height: auto !important;
+                    max-height: 30vh !important;
+                }
             }
             .name{
-                width: 100%; height: 100%;
-                display: flex; align-items: center;
+                width: 100%; height: 3.5vh;
+                overflow: hidden;
                 h4{
-                    width: 100%;
-                    height: auto;
                     max-height: 100%;
-                    font-size: .9rem;
+                    font-size: 1.35vh;
+                    font-weight: 600;
                     transition: color ease .5s;
                     overflow-wrap: break-word;
                 }
             }
             &:hover .name h4{
-                color: #6128FF;
+                color: $morado1;
             }
         }
     }
@@ -49,7 +54,6 @@
     }
     .chapter{
         padding: 0 2% !important;
-        grid-template-columns: max-content auto !important;
         .img{
             background: none !important;
         }

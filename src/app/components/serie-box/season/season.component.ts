@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { languages_covers, seasons_language } from 'src/app/models';
 
 @Component({
   selector: 'app-season',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
   styleUrls: ['./season.component.scss']
 })
 export class SeasonComponent implements OnChanges {
-  @Input() seasons:any;
+  @Input() language:languages_covers = {};
   @Output() selected = new EventEmitter();
   select:number = 1;
   next:boolean = false;
@@ -17,11 +18,11 @@ export class SeasonComponent implements OnChanges {
   }
 
   verify(){
-    if(this.seasons != (null || undefined)){
-      if(this.seasons.length <= this.select){
+    if(this.language.seasons != (null || undefined)){
+      if(this.language.seasons.length <= this.select){
         this.next = false;
       }
-      else if(this.seasons.length > this.select){
+      else if(this.language.seasons.length > this.select){
         this.next = true;
       }
       if(this.select > 1){
@@ -34,13 +35,10 @@ export class SeasonComponent implements OnChanges {
   selectSeason(value:string){
     if(value == 'next'){
       this.select += 1;
-      this.selected.emit(this.select);
-      this.verify();
-    }
-    if(value == 'back'){
+    }else if(value == 'back'){
       this.select -= 1;
-      this.selected.emit(this.select);
-      this.verify();
     }
+    this.selected.emit(this.language?.seasons?.[this.select - 1].season);
+    this.verify();
   }
 }

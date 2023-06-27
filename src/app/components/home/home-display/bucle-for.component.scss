@@ -1,0 +1,56 @@
+@import '../../../vars.scss';
+@mixin superellipse($value){
+    position: absolute;
+    opacity: 0;
+    width: calc($value * 1vh); height: calc($value * 1vh);
+    background: $morado1;
+    border-radius: calc($value / 10 * $value * .2vh);
+    animation: animated 15s linear infinite;
+}
+@keyframes animated {
+    0%{
+        bottom: 0%; transform: rotate(0deg);
+        opacity: 0;
+    } 5%{opacity: 1;}
+    100%{
+        bottom: 100%; transform: rotate(720deg);
+        opacity: 0;
+        background: $accent1;
+    }
+}
+$limit: 15;
+$c: 14;
+.container .-images .-animation{
+    @for $n from 1 to $limit {                
+        &>span:nth-child(#{$n}){
+            @include superellipse($n);
+            animation-delay: calc($n / 10 * $n) + s;
+        };
+    };
+
+    &>span:nth-child(5), &>span:nth-child(9){
+        right: calc($c * 3%);
+    };
+    &>span:nth-child(3), &>span:nth-child(8), &>span:nth-child(12){
+        right: calc($c * 2.5%);
+    };
+    &>span:nth-child(13), &>span:nth-child(6){
+        right: calc($c * 6%);
+    };
+    &>span:nth-child(7){
+        right: calc($c * 4%);
+    };
+    &>span:nth-child(1), &>span:nth-child(11), &>span:nth-child(15){
+        right: calc($c * 5%);
+    };
+    &>span:nth-child(2), &>span:nth-child(10){
+        right: calc($c * 1.5%);
+    };
+    &>span:nth-child(14), &>span:nth-child(4){
+        right: calc($c * .25%);
+    };
+};
+
+@media screen and (max-width:600px) {
+    $limit: 8;
+}

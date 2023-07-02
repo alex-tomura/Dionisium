@@ -6,7 +6,7 @@ export const environment = {
   },
   url_api:{
     _auth:'https://dionisium-auth.onrender.com/api',
-    _handler:'https://dionisium-handler.onrender.com',
+    _handler:'https://main--harmonious-crostata-3a69ba.netlify.app',
     // _handler:'http://localhost:5560',
     _update:'https://dionisium-update.onrender.com/api'
   },

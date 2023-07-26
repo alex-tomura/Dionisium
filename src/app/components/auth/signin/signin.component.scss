@@ -57,3 +57,10 @@ form{
         }
     }
 }
+
+@media screen and (max-width:750px) {
+    .container{
+        height: 100% !important;
+        margin-top: 0 !important;
+    }
+}

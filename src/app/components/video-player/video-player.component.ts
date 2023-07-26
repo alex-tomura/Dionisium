@@ -53,9 +53,9 @@ export class VideoPlayerComponent implements OnInit {
       
       setTimeout(()=>{
         this._serie_handler.next(this.body);
-        this.loadDisqus();
       }, 30000);
     });
+    this.loadDisqus();
   }
 
   loadDisqus(): void {

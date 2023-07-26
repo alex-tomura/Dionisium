@@ -6,7 +6,7 @@ export const environment = {
   },
   url_api:{
     _auth:'https://dionisium-auth.onrender.com/api',
-    _handler:'https://dionisiumhandler-dionisiumenterprise.b4a.run/api',
+    _handler:'https://dionisiumhandler-dionisiumenterprise.b4a.run/',
     // _handler:'http://localhost:5560',
     _update:'https://dionisium-update.onrender.com/api'
   },

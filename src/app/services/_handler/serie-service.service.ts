@@ -14,6 +14,7 @@ export class SerieServiceService {
 
   GetSeries(data:any, type:string, mode:string, to:number, limit?:number){
     let query = get_cover(limit || 10, type, mode, to, data);
+    console.log(query)
     return this.apollo.watchQuery({
       query:query
     }).valueChanges;
